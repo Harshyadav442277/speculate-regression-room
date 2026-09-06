@@ -1,0 +1,8 @@
+# Claude Opus 5 — deployment compatibility and test completion
+
+Codex is integrating your completed runtime task. You own only src/runtime/**, tests/runtime*, CLAUDE_STATUS.md. No changes to other files, installs, credentials, git or deployment. Do not read .env or unrelated paths. This task makes no product-provider calls.
+
+1. Production Vercel log: ERR_MODULE_NOT_FOUND: Cannot find module '/var/task/src/runtime/config' imported from '/var/task/src/runtime/index.js'. Local tsx masks extensionless ESM imports. Add explicit .js extensions to ALL local relative imports/exports in your runtime modules, including type imports and testing modules. Do not change package imports. Codex will redeploy and verify the actual Node functions.
+2. Your old finish() helper in tests/runtime.test.ts cites empty evidence. Use the valid deterministic finish step instead for successful scenarios. Require status completed and two cited conclusions in the cooperative intervention and independent control success tests. Prove those whole paths complete, not merely emit intermediate events. Fix actual runtime defects if exposed.
+3. There are two sets of seven new hardening tests: tests/runtime-hardening.test.ts and the appended portion of tests/runtime.test.ts. Preserve useful distinct assertions, but remove exact duplicate cases if appropriate. Do not count duplication as extra coverage.
+4. Run node node_modules/typescript/bin/tsc --noEmit and node node_modules/tsx/dist/cli.mjs --test tests/runtime.test.ts tests/runtime-hardening.test.ts (adjust if consolidating). Append a concise result in CLAUDE_STATUS.md. Keep this focused; do not research or add features. You have a small completion budget.

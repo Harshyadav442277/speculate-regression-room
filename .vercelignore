@@ -1,0 +1,12 @@
+.git
+.claude
+.local
+.openai
+.pnpm-store
+.env*
+node_modules
+dist
+artifacts
+tests
+research/runtime-review
+*.md

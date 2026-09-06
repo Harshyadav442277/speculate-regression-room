@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Investigate a checkout regression with concurrent agents, inspect the evidence that changes their next action, and export a runnable regression check.">
+  <meta name="theme-color" content="#101821">
+  <title>SPECULATE — Regression investigation</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="/" aria-label="Speculate home"><span class="mark" aria-hidden="true">∥</span> SPECULATE</a><span class="top-note">REGRESSION ROOM</span><span class="mode" id="mode">Connecting</span></header>
+  <main>
+    <div class="heading"><div><p class="eyebrow">CHECKOUT / INVESTIGATION</p><h1>Follow the evidence.</h1><p class="intro">Two investigators. One shared record. See what changes their next move.</p></div><button type="button" id="open-recorded" class="import-button">Open recorded run</button><input id="import" type="file" accept=".json,application/json" hidden></div>
+    <p id="connection" class="notice" role="status">Checking the investigation service…</p>
+    <div class="workspace">
+      <aside class="setup">
+        <div class="section-title"><span class="step">01</span><h2>Reproduce a quote</h2></div>
+        <p class="muted">A test checkout. Change the input before you investigate.</p>
+        <form id="run-form">
+          <label id="access-label" hidden>Demo access code<input id="access-code" type="password" autocomplete="off" maxlength="512"></label>
+          <label>Unit price <span class="unit">cents</span><input name="unitPriceCents" type="number" min="0" max="1000000" value="10000" step="1" required></label>
+          <div class="input-row"><label>Quantity<input name="quantity" type="number" min="1" max="100" value="2" step="1" required></label><label>Discount <span class="unit">bps</span><input name="discountBps" type="number" min="0" max="10000" value="1000" step="1" required></label></div>
+          <label>Tax <span class="unit">bps</span><input name="taxBps" type="number" min="0" max="10000" value="500" step="1" required></label>
+          <label>Test scenario<select name="fixture"><option value="discount-twice">Pricing regression</option><option value="tax-twice">Tax regression</option><option value="correct">Correct checkout</option></select></label>
+          <details><summary>Comparison policy</summary><label class="policy-label">Investigation mode<select name="policy"><option value="cooperative">Two agents · reconsider on peer evidence</option><option value="single">One adaptive investigator</option><option value="independent">Two agents · no boundary reconsideration</option></select></label><p class="fine">Same observations and run budget. The last mode isolates boundary reconsideration.</p></details>
+          <button id="start" class="primary" type="submit" disabled>Start investigation <span aria-hidden="true">↗</span></button>
+          <button id="cancel" class="secondary" type="button" hidden>Stop investigation</button>
+        </form>
+        <p class="fine">10,000 basis points = 100%. Discount is applied once, rounded to cents, then tax is applied once.</p>
+        <div class="budget"><span>Run limits</span><strong>12 probes · 12 model calls · 2 min</strong></div>
+      </aside>
+      <section class="investigation" aria-label="Investigation results">
+        <div class="result-bar"><div><span class="metric-label">Contract expects</span><strong id="expected">—</strong></div><div><span class="metric-label">Checkout returned</span><strong id="actual">—</strong></div><div class="outcome"><span id="outcome" class="outcome-badge">Awaiting a run</span><span id="run-time" class="muted">No observations yet</span></div></div>
+        <div class="section-title"><span class="step">02</span><h2>Watch the investigation</h2><span class="tiny-label" id="run-state">READY</span></div>
+        <div class="lanes" id="lanes">
+          <article class="agent pricing" id="pricing"><div class="agent-header"><span class="agent-symbol">P</span><div><h3>Pricing</h3><span class="agent-state">Waiting</span></div><span class="pulse" aria-hidden="true"></span></div><p class="agent-description">Investigates quantity, discounts, and rounding.</p><div class="agent-progress"><span></span></div><p class="agent-latest">Starts with the same observed failure as its peer.</p></article>
+          <article class="agent tax" id="tax"><div class="agent-header"><span class="agent-symbol">T</span><div><h3>Tax</h3><span class="agent-state">Waiting</span></div><span class="pulse" aria-hidden="true"></span></div><p class="agent-description">Investigates tax application and interactions.</p><div class="agent-progress"><span></span></div><p class="agent-latest">New results enter a shared evidence record.</p></article>
+        </div>
+        <div class="revision-area"><div class="revision-title"><span class="link-symbol" aria-hidden="true">↳</span><h3>Evidence that changed the plan</h3></div><div id="revisions"><p class="empty-text">A revised action will appear here with the peer result that caused it.</p></div></div>
+        <div class="evidence-heading"><div class="section-title"><span class="step">03</span><h2>Inspect the evidence</h2></div><span id="probe-count" class="tiny-label">0 EXECUTED</span></div>
+        <div class="table-wrap"><table><thead><tr><th scope="col">Probe</th><th scope="col">Investigator</th><th scope="col">Expected</th><th scope="col">Observed</th><th scope="col">Result</th></tr></thead><tbody id="evidence"><tr><td colspan="5" class="table-empty">Executed quote results will appear here. Agent explanations are shown separately.</td></tr></tbody></table></div>
+        <div class="report-area" id="report-area" hidden><div class="section-title"><span class="step">04</span><h2>Take the result with you</h2></div><div id="conclusions"></div><div class="report-actions"><button class="primary" id="export-regression">Export regression test</button><button class="secondary" id="export-report">Export report</button><button class="secondary" id="export-json">Export run JSON</button><button class="secondary" id="verify">Check corrected fixture</button></div><p id="verification" class="fine" role="status">The corrected fixture is prebuilt. Passing these cases does not prove every input is correct.</p><div class="stats" id="stats"></div></div>
+        <details class="trace"><summary>Ordered run events <span id="event-count">0</span></summary><ol id="events"></ol></details>
+      </section>
+    </div>
+    <footer><span>Powered by concurrent Mozaik participants</span><span>Observed results are evidence. Conclusions are model judgments.</span></footer>
+  </main>
+</body>
+</html>
