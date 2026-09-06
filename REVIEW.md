@@ -1,6 +1,6 @@
 # Project review
 
-Updated September 6, 2026, 16:35 IST. This file is for you, in plain language.
+Updated September 6, 2026, 16:40 IST. This file is for you, in plain language.
 
 ## The idea
 
@@ -61,7 +61,8 @@ You are handling these items while I finish the independent work:
 2. **For the hosted demo, set a private demo access code.** This stops people without the code from starting paid investigations. The setting is `SPECULATE_RUN_TOKEN`, at least 16 characters. It is separate from the provider key. Keep it private; someone with the code can start multiple bounded runs.
 3. **Confirm the hackathon dashboard details:** registration completed, team eligible, exact deadline with timezone, and any extra instructions given to participants.
 4. **Allow time for the final recording and submission.** I can prepare the script and files, but we still need a genuine recorded run and confirmation that the entry was submitted.
-5. **Accept the GitHub repository transfer.** The active GitHub account changed after my earlier check. The private backup was created at 0xsaroj001/speculate-regression-room; I requested its transfer to Harshyadav442277. Accept that transfer email or notification. I will then verify ownership and update the source link. This was my destination mistake; the repository remains private.
+
+**GitHub ownership is resolved.** The private backup is now under Harshyadav442277. The transfer is complete; you do not need an email or notification. I switched the active account at your instruction, corrected this project's remote, and removed the previous account's automatically retained access.
 
 No new MCP or plugin is needed right now. Vercel and Claude Code are already signed in.
 
@@ -105,6 +106,6 @@ The walkthrough now tells us to test against the same broken scenario the invest
 
 I have not adopted its estimated loss probabilities or its suggestion to call the records tamper-evident. Those are not established. Our files are inspectable records, not cryptographically protected proof. Historical idea files stay preserved; judges should start with README.md and the demo.
 
-The final application source is committed as **25ec3c1**, under your authorship, and matches the private GitHub backup that passed the fresh-checkout checks. Current backup: https://github.com/0xsaroj001/speculate-regression-room. Transfer to Harshyadav442277 is pending acceptance. Later documentation-only commits may follow this tested source revision. Judge access must still be checked before submission.
+The final application source is committed as **25ec3c1**, under your authorship, and matches the private GitHub backup that passed the fresh-checkout checks. Current backup: https://github.com/Harshyadav442277/speculate-regression-room. Ownership and privacy are verified; later documentation-only commits follow this tested source revision. Judge access must still be checked before submission.
 
 One browser check remains incomplete: the save link appears and the export itself runs correctly, but this app's browser did not expose a completed download. The command-line save path is documented and its generator is tested, so the demonstration does not depend on that browser behavior.
