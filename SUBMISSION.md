@@ -27,7 +27,7 @@ The application and controlled Mozaik runtime checks work locally. Real HTTP pro
 ## Links and final checks
 
 - App: https://speculate-regression-room.vercel.app — final online investigation verification pending.
-- Source: private backup pending; confirm judge access before pasting a source link.
+- Source: https://github.com/0xsaroj001/speculate-regression-room is currently private. Transfer to Harshyadav442277 is requested and awaits recipient acceptance. Resolve ownership, update this link and confirm judge access before submitting it.
 - Video: not recorded yet. Keep mode labels and actual outcomes visible.
 - Confirm registration, team members, eligibility, private brief and exact deadline in the dashboard.
 - Replace this evidence statement with measured results only after reviewing every attempted comparison.

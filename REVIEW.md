@@ -1,6 +1,6 @@
 # Project review
 
-Updated September 6, 2026, 11:40 IST. This file is for you, in plain language.
+Updated September 6, 2026, 16:35 IST. This file is for you, in plain language.
 
 ## The idea
 
@@ -24,7 +24,7 @@ I have narrowed the project to make it stronger: changeable checkout inputs, vis
 - Tests confirm that real checkout requests are executed and that exported tests fail on the broken checkout and pass on the corrected one.
 - Every route now produces the same tested export, including saved runs opened in the browser. The test file names the scenario it came from. A visible save link is available if the browser does not start its download.
 - A separate saved-run viewer works without a model connection. Its imported inputs, evidence, mode labels and phone-sized layout have been checked. A genuine AI recording is still missing.
-- A fresh local copy installed all 145 packages from the dependency cache, with no downloads, and passed the build and checkout checks. This is useful setup evidence; access from a judge's computer is a separate check.
+- A fresh copy cloned from the private GitHub backup installed all 145 packages from the dependency cache, with no downloads, and passed the build, checkout checks and seven core tests. The exported test again failed on the broken checkout and passed on the corrected one. Access from a judge's account is a separate check.
 - Two real Mozaik participants have been tested with controlled model responses. Their overlap and action changes work in those tests.
 - The latest full integration check passed **35 tests**, after removing duplicated tests. It covers stopping, failures, the single investigator, and complete two-investigator runs with cited conclusions. The build and type checks also pass.
 - The interface is published on Vercel, and the corrected-checkout endpoint works. The model routes still have a production startup error. The final fix passes locally and needs one more deployment; automatic approval review blocked that command because its usage limit was reached.
@@ -61,6 +61,7 @@ You are handling these items while I finish the independent work:
 2. **For the hosted demo, set a private demo access code.** This stops people without the code from starting paid investigations. The setting is `SPECULATE_RUN_TOKEN`, at least 16 characters. It is separate from the provider key. Keep it private; someone with the code can start multiple bounded runs.
 3. **Confirm the hackathon dashboard details:** registration completed, team eligible, exact deadline with timezone, and any extra instructions given to participants.
 4. **Allow time for the final recording and submission.** I can prepare the script and files, but we still need a genuine recorded run and confirmation that the entry was submitted.
+5. **Accept the GitHub repository transfer.** The active GitHub account changed after my earlier check. The private backup was created at 0xsaroj001/speculate-regression-room; I requested its transfer to Harshyadav442277. Accept that transfer email or notification. I will then verify ownership and update the source link. This was my destination mistake; the repository remains private.
 
 No new MCP or plugin is needed right now. Vercel and Claude Code are already signed in.
 
@@ -104,6 +105,6 @@ The walkthrough now tells us to test against the same broken scenario the invest
 
 I have not adopted its estimated loss probabilities or its suggestion to call the records tamper-evident. Those are not established. Our files are inspectable records, not cryptographically protected proof. Historical idea files stay preserved; judges should start with README.md and the demo.
 
-Source checkpoint 8d64800 is committed under your authorship. The final reliability changes and a private source backup are being completed. A private backup will protect the work, but judge access must still be checked before submission.
+The final application source is committed as **25ec3c1**, under your authorship, and matches the private GitHub backup that passed the fresh-checkout checks. Current backup: https://github.com/0xsaroj001/speculate-regression-room. Transfer to Harshyadav442277 is pending acceptance. Later documentation-only commits may follow this tested source revision. Judge access must still be checked before submission.
 
-The remaining independent check is browser download completion: the save link appears and the export itself runs correctly, but this app's browser did not expose a completed download. The command-line save path is documented so the demonstration does not depend on that browser behavior.
+One browser check remains incomplete: the save link appears and the export itself runs correctly, but this app's browser did not expose a completed download. The command-line save path is documented and its generator is tested, so the demonstration does not depend on that browser behavior.

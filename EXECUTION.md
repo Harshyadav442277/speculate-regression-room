@@ -22,7 +22,7 @@ No proven top-two probability or algorithmic novelty exists. A small arithmetic 
 
 | Owner | Files | Deliverable | State |
 |---|---|---|---|
-| Codex | package.json, pnpm-lock.yaml, tsconfig.json, src/contracts.ts, src/core/**, tests/core*, scripts/**, docs | Install, shared contracts, evidence/probes/report, evaluation, integration | In progress |
+| Codex | package.json, pnpm-lock.yaml, tsconfig.json, src/contracts.ts, src/core/**, tests/core*, scripts/**, docs | Install, shared contracts, evidence/probes/report, evaluation, integration | Source 25ec3c1 committed and privately backed up; final 35 tests and fresh remote checkout passed; provider evaluation remains pending |
 | Claude Opus 5 | CLAUDE_DEMO_REVIEW.md, CLAUDE_STATUS.md; runtime frozen | Check demo steps, claims and a fair evaluation challenge | Delivered; useful findings integrated by Codex |
 | Codex | web/**, api/**, src/deployment/**, Vercel config, browser tests | Deploy and verify the public judge journey | Final startup fix passes locally; deployment requires manual help after approval-review usage failure |
 | User | Dashboard and model API access | Registration/brief and credentials | Requested; no new plugin needed |

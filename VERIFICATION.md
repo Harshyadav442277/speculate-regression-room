@@ -1,6 +1,6 @@
 # Verification record
 
-Updated September 6, 11:43 IST. Verification is separated from submission and ranking evidence.
+Updated September 6, 16:35 IST. Verification is separated from submission and ranking evidence.
 
 ## Latest integration and deployment
 
@@ -10,14 +10,16 @@ Updated September 6, 11:43 IST. Verification is separated from submission and ra
 - **The deployed /api/config and /api/investigate still fail at startup.** First error was extensionless local ESM imports, fixed by Claude. Second was the package's CommonJS entry requiring its ESM cloud dependency under Vercel instrumentation. Codex's explicit ESM-entry fix passes all local checks but is not deployed yet.
 - Automatic approval review rejected the final `pnpm dlx vercel@59.11.7 deploy --prod --yes --scope wukong4` attempt because its usage limit was reached. The user has the manual command. Do not route around that rejection through another tool or worker. After deployment, verify config returns JSON, missing-provider start fails safely, cross-origin start is rejected, and the public browser loads its expected setup state.
 - Vercel Production settings were listed by name only: no project environment variables configured. No provider secret was read or printed. Local .env.local created by Vercel linking is ignored; .env.example remains eligible for source control.
-- User-account Git trusts only this exact project path. Initial source commit: 8d64800c6bac2968adef40820b84378eac6eb004, authored solely by Harshyadav442277. Final reliability changes are being checkpointed separately. Historical upstream attribution and licenses were preserved.
+- User-account Git trusts only this exact project path. Initial source commit: 8d64800c6bac2968adef40820b84378eac6eb004. Tested final application source: **25ec3c10fd3b3714df6233ebf3b4545f03c98184**. Both are authored solely by Harshyadav442277; actual commit messages contain no co-author/generated-by trailers. Historical upstream attribution and licenses were preserved.
 - Claude Opus 5 coding tasks were run through the actual installed CLI and independently integrated. This is not app-provider evidence. A separate worker's JUDGE_VERDICT.md was read; its unsupported loss probabilities and tamper-evidence claim were not adopted.
 
-An additional read-only public config request at approximately 11:40 IST still returned 500. Final hosted browser/export verification must follow the pending deployment.
+The latest additional read-only public config request still returned 500. Final hosted browser/export verification must follow the pending deployment.
 
 ## Independent checks completed September 6
 
 - Fresh local Git clone of 8d64800 with no shared node_modules: `pnpm install --frozen-lockfile --offline --store-dir C:\Users\hyada\AppData\Local\pnpm\store` reused 145 cached packages and downloaded zero. Build and fixture checks passed. This verifies the documented setup with a warm dependency cache; it is not an external judge-access or brand-new internet machine check.
+- Final source 25ec3c1 was separately cloned from GitHub into a new directory at 16:33 IST. Its hash exactly matched the workspace. Frozen offline install again reused 145 packages with zero downloads; build, twelve fixture HTTP cases, three invalid-input checks and seven core tests passed. The latter executes the shared regression generator against broken and corrected services. This was authenticated access to a private repository, not judge-access verification.
+- GitHub's active account changed from the earlier verified Harshyadav442277 account to the already-signed-in 0xsaroj001 account. An unqualified create command therefore created the private backup at 0xsaroj001/speculate-regression-room. Privacy and source hash were checked. Codex requested a transfer to Harshyadav442277 and informed the user; recipient acceptance is pending. Global CLI account selection was not changed. Never treat the requested transfer as completed ownership.
 - Canonical exports now live in web/export.js with a typed server wrapper. The existing regression execution test runs that generator against actual broken/corrected HTTP fixtures and observes exit 1/0. Fourteen affected core/hosted-route tests passed during integration; all 35 passed after final changes. Served /export.js returned 200.
 - Compiled hosted handlers under Node with require(ESM) disabled: missing configuration returned safe not-ready JSON. Temporarily making only the compiled runtime config module unavailable made GET return 200 with ready:false and an authorized start return 503 with a generic message. The compiled file was restored. No provider call was made.
 - Recorded viewer: Node built-ins plus built assets only, on localhost:4320. After loading the page, stopped its server and confirmed it was unreachable. Imported a controlled artifact containing actual HTTP results; it displayed 7351/3/1750/825, expected 19695, observed 16248, three evidence rows, zero model requests, and Recorded · controlled test. This is an app-server-unreachable check, not full system internet disconnection or a genuine model recording.

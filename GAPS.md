@@ -17,7 +17,8 @@ Updated September 6. The application is deployed to Vercel; final endpoint verif
 | P1 | Hosted stream recovery | A run is owned by one streamed response; disconnect cancellation tested | Export successful runs; do not promise reconnect/resume or durable hosted history |
 | P1 | Full rehearsal/offline fallback incomplete | Fresh local clone with frozen cached install passes; controlled saved run opens after the app server is stopped; mobile view checked | Finish final public browser checks, full dead-network rehearsal and real captured artifact |
 | P1 | Browser file-save completion unverified | All export paths share one tested generator; explicit Save link appears; browser tool does not report a completed file | Use documented CLI artifact save for rehearsal; verify browser save in the final demo browser |
-| P1 | Demo recording and judge access absent | First source commit exists; private backup in progress; no judge-accessible source or video verified | Verify repository/video links from the intended judge account and submit |
+| P1 | Repository ownership correction pending | Tested source 25ec3c1 is backed up privately under 0xsaroj001 after an active-account change; transfer to Harshyadav442277 requested | Recipient accepts transfer; verify actual owner and remote, then judge access |
+| P1 | Demo recording and judge access absent | Fresh GitHub clone/install/build/export checks passed; repository is private and no video is verified | Verify repository/video links from the intended judge account and submit |
 | P2 | Novelty gap not established | Similar reactive AI SRE systems exist | Make precise implementation claims; no “first” or competitor-absence assertions |
 | P2 | Deadline timezone ambiguity | CET wording and ET/PT conversions differ by an hour | Follow earlier interpretation and internal buffer; confirm dashboard |
 
