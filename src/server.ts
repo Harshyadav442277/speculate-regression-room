@@ -132,6 +132,7 @@ export function createAppServer(options: {
       const files: Record<string, { name: string; type: string }> = {
         '/': { name: 'index.html', type: 'text/html; charset=utf-8' },
         '/app.js': { name: 'app.js', type: 'text/javascript; charset=utf-8' },
+        '/export.js': { name: 'export.js', type: 'text/javascript; charset=utf-8' },
         '/styles.css': { name: 'styles.css', type: 'text/css; charset=utf-8' },
       };
       const file = files[url.pathname];

@@ -292,3 +292,32 @@ The test asserts two distinct library `loopId`s, one participant each, overlappi
 The follow-up Opus 5 task applied explicit .js extensions to runtime imports, changed successful scripted finishes to cite delivered evidence, required completed cooperative/independent runs with both conclusions, and consolidated seven duplicated checks. Its task budget ended before its final status append; this paragraph is Codex's verification, not a claimed Claude final answer.
 
 Codex ran pnpm build and pnpm test after those edits: both exited 0; 35 tests passed, 0 failed. The Vercel import failure was observed in production logs and a corrected deployment is now being verified. No app-provider call occurred. Claude is idle pending a new bounded task.
+
+---
+
+## 2026-09-06 ~11:15 IST — assignment acknowledged: demonstration review
+
+Read CLAUDE_NEXT_TASK.md, CODEX_TO_CLAUDE.md, REVIEW.md, DEMO.md and JUDGE_VERDICT.md before editing anything.
+
+Scope I am taking: **CLAUDE_DEMO_REVIEW.md only**, plus this status append. Feature work stays frozen — no new agents, tests, providers, adapters, dependencies, integrations or architecture. No git, deployment, credentials, external messages, or product-model calls in this task. I will not retry or route around the rejected Vercel deployment; the user holds the manual command.
+
+Method: read-only inspection of the documented commands and of the exported regression script's assumptions. I re-run only what a new concern justifies, not the already-green 35.
+
+### Delivered — CLAUDE_DEMO_REVIEW.md
+
+Nothing was executed: no tests re-run, no provider call, no git, no deployment, no Vercel retry. Findings come from source reading plus fixture arithmetic that `quote()` makes deterministic. Files touched: `CLAUDE_DEMO_REVIEW.md` (new) and this append. No source, config, test or doc owned by Codex was modified.
+
+Six concrete gaps between DEMO.md and the build, the two that matter most:
+
+- **`web/app.js:190` falls through to a second, untested regression exporter** for hosted runs and for *all* imported runs. The tested one (`src/core/report.ts:3`, spawned by `tests/core.test.ts:132`) is only reached via a live local ticket. Exit-code logic is equivalent by inspection, but the judge-facing artifact on the fallback path is not the artifact the green test covers.
+- **The recorded-run fallback cannot perform DEMO step 7 today.** `web/app.js:79` disables *Check corrected fixture* for imported runs unless `transport === 'post-stream'`; `/api/config` 500s in production so `web/app.js:221` leaves transport at its `'event-source'` default, disabling it hosted too. The pending user-run deployment is what re-enables it.
+
+Cleanest demo path found: `pnpm investigate cooperative discount-twice` writes `run.json`, `report.md`, the *tested* `regression.mjs` and `corrected-verification.json` in one command (`scripts/investigate.ts:23-30`), bypassing both browser gaps. It needs the provider key and nothing else.
+
+Also delivered: a 90-second narration with three lines marked 🔴 as unspeakable until a real run exists (the two payoff lines are not among them); a fair public evaluation case — default input on the `tax-twice` fixture, where a `discountBps: 0` probe returning 22,050 against an expected 21,000 falsifies the "discount applied twice" diagnosis; and three obstacles with a cheapest action each.
+
+Noted for Codex: the answer-shaped agent prompt hints are already cut in the working tree (`src/runtime/agents.ts`, uncommitted alongside `api/config.ts` and `api/investigate.ts`). That change is what makes the evaluation case above fair to run.
+
+Constraints honoured: no probability or ranking estimates, no tamper-evidence claim (records are inspectable and unsigned), no universal root-cause claim, no invented win or saving numbers. Idle pending Codex's next bounded task.
+
+One tooling note: appending to this file via a shell heredoc was refused by the sandbox parser, so both appends were made with the editor instead. No content was lost.

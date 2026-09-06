@@ -3,7 +3,7 @@ import { resolve } from 'node:path';
 
 const output = resolve('dist');
 await mkdir(output, { recursive: true });
-for (const file of ['index.html', 'app.js', 'styles.css']) await copyFile(resolve('web', file), resolve(output, file));
+for (const file of ['index.html', 'app.js', 'export.js', 'styles.css']) await copyFile(resolve('web', file), resolve(output, file));
 try {
   const recordings = await readdir(resolve('web/recordings'));
   await mkdir(resolve(output, 'recordings'), { recursive: true });

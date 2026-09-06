@@ -23,11 +23,11 @@ No proven top-two probability or algorithmic novelty exists. A small arithmetic 
 | Owner | Files | Deliverable | State |
 |---|---|---|---|
 | Codex | package.json, pnpm-lock.yaml, tsconfig.json, src/contracts.ts, src/core/**, tests/core*, scripts/**, docs | Install, shared contracts, evidence/probes/report, evaluation, integration | In progress |
-| Claude Opus 5 | CLAUDE_DEMO_REVIEW.md, CLAUDE_STATUS.md; runtime frozen | Check demo steps, claims and a fair evaluation challenge | Next task prepared; acknowledgment pending |
+| Claude Opus 5 | CLAUDE_DEMO_REVIEW.md, CLAUDE_STATUS.md; runtime frozen | Check demo steps, claims and a fair evaluation challenge | Delivered; useful findings integrated by Codex |
 | Codex | web/**, api/**, src/deployment/**, Vercel config, browser tests | Deploy and verify the public judge journey | Final startup fix passes locally; deployment requires manual help after approval-review usage failure |
 | User | Dashboard and model API access | Registration/brief and credentials | Requested; no new plugin needed |
 
-Claude's latest assignment is CLAUDE_NEXT_TASK.md, following its runtime hardening and import-compatibility tasks. It writes results to CLAUDE_STATUS.md. Codex reviews the output before integration. Only Codex changes dependencies, shared contracts or deployment. No one edits another agent's idea file.
+Claude's latest assignment, CLAUDE_NEXT_TASK.md, is complete. Its report is preserved in CLAUDE_DEMO_REVIEW.md. Codex corrected the walkthrough, removed answer-shaped prompts, unified the exporter and added the dependency-free saved-run viewer. No new runtime work is assigned until actual provider results identify a problem. Only Codex changes dependencies, shared contracts or deployment. No one edits another agent's idea file.
 
 ## Gates in order
 

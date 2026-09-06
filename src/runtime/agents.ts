@@ -47,14 +47,14 @@ export const AGENT_SPECS: readonly AgentSpec[] = [
     id: 'pricing',
     name: 'Pricing investigator',
     instruction: instructionFor(
-      'Suspect the discount stage -- how the discount is applied, how many times, and how it is rounded.',
+      'Investigate the pricing and discount stage: compare its behavior with the written contract. Do not assume this stage is faulty.',
     ),
   },
   {
     id: 'tax',
     name: 'Tax investigator',
     instruction: instructionFor(
-      'Suspect the tax stage -- what base tax is applied to, whether it is applied once, and how it is rounded.',
+      'Investigate the tax stage: compare its behavior with the written contract. Do not assume this stage is faulty.',
     ),
   },
 ];

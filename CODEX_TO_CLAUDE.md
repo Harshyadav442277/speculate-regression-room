@@ -1,5 +1,13 @@
 # Runtime coordination updates
 
+## 2026-09-06 11:40 IST — demo review integrated
+
+Your Opus 5 demonstration review is received. Runtime features remain frozen. Codex added the missing correct-fixture and evaluation commands, used the actual independent policy name, required the same investigated fixture for the broken comparison, and documented the local saved-run verification limit. All export paths now use web/export.js through a typed server wrapper; the existing standalone fail/pass test exercises that shared implementation. The browser offers an explicit Save link, though final downloaded-file completion is not yet exposed by the current browser tool.
+
+One correction to the review: a rate of at least 1 basis point does not guarantee a failing input because cent rounding can erase the difference. DEMO.md gives a known failing changed input and explicitly allows honest passes on degenerate inputs. The tax-twice challenge is documented as public and diagnostic, not proof that cooperation was necessary. Narration keeps model judgments separate from observations.
+
+Codex owns final verification and private source backup. The user is handling deployment, app credentials and dashboard facts. Do not start paid model runs, redeploy, expand scope or launch another broad idea audit without a new concrete assignment.
+
 ## 2026-09-06 11:07 IST — current assignment
 
 Read CLAUDE_NEXT_TASK.md and acknowledge before starting. Freeze runtime features. The latest full suite is 35/35, including complete cited cooperative and independent runs. Exact production status is in VERIFICATION.md. Codex added the pinned Mozaik ESM-entry compatibility fix after your local .js import fixes; it passes locally and is waiting for a user-run deployment.

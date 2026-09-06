@@ -12,11 +12,12 @@ Updated September 6. The application is deployed to Vercel; final endpoint verif
 | P1 | No controlled comparative results | All speed/cost/test-saving values are unknown | Same harness, honest controls and failure reporting |
 | P1 | No blind evaluation variant reserved | Public correct/double-discount/double-tax fixtures exist | Evaluator reserves a separate configuration before prompt tuning |
 | P1 | Model may infer an overly broad cause | Executable probes support limited distinctions | Link conclusions to observed evidence; preserve uncertainty |
-| P1 | Prompt/context answer leakage | Runtime excludes source, operator variant and verification table; seed/fresh evidence delivery tested | Review real model context and avoid broader causal claims |
+| P1 | Prompt/context answer leakage | Runtime excludes source, operator variant and verification table; answer-shaped stage hints removed; seed/fresh evidence delivery tested | Review real model context and avoid broader causal claims |
 | P1 | Real-provider failure behavior | Controlled tests cover deadlines, malformed actions, budgets, stopping and preserved evidence | Verify those limits with the chosen provider; cancellation cannot stop an already-started provider request |
 | P1 | Hosted stream recovery | A run is owned by one streamed response; disconnect cancellation tested | Export successful runs; do not promise reconnect/resume or durable hosted history |
-| P1 | Full rehearsal/fresh clone/offline fallback incomplete | Controlled local browser journey and Vercel clean install tested | Finish public browser checks, fresh clone, dead-network rehearsal and real captured artifact |
-| P1 | Demo recording and accessible repository absent | Project-local Git initialized; no judge-accessible remote or video verified | Package and verify repository/video/submission |
+| P1 | Full rehearsal/offline fallback incomplete | Fresh local clone with frozen cached install passes; controlled saved run opens after the app server is stopped; mobile view checked | Finish final public browser checks, full dead-network rehearsal and real captured artifact |
+| P1 | Browser file-save completion unverified | All export paths share one tested generator; explicit Save link appears; browser tool does not report a completed file | Use documented CLI artifact save for rehearsal; verify browser save in the final demo browser |
+| P1 | Demo recording and judge access absent | First source commit exists; private backup in progress; no judge-accessible source or video verified | Verify repository/video links from the intended judge account and submit |
 | P2 | Novelty gap not established | Similar reactive AI SRE systems exist | Make precise implementation claims; no “first” or competitor-absence assertions |
 | P2 | Deadline timezone ambiguity | CET wording and ET/PT conversions differ by an hour | Follow earlier interpretation and internal buffer; confirm dashboard |
 

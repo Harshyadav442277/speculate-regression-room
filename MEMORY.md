@@ -36,8 +36,11 @@ Commits follow the user's configured authorship and contain no co-author or gene
 - REVIEW.md is the user's requested plain-language project brief. Deployment and final test results are recorded there and in VERIFICATION.md.
 - Final local checks: 35 tests pass, build/typecheck pass. Production UI and corrected-checkout endpoint verified. Node startup exposed extensionless runtime imports and then the package's CommonJS-to-ESM dependency path; both fixes exist locally, with the explicit shipped ESM entry checked under disabled require(ESM).
 - Last deployment attempt was rejected by automatic approval review because its usage limit was reached. No alternate tool/worker may bypass that rejection. The user has the exact manual command. Working hosted model routes remain unverified.
-- Exact-path Git trust was added for the user account; project source is staged but not committed. Local credential files remain ignored.
-- Independent JUDGE_VERDICT.md was reviewed. The demo now ends with the exportable test; unsupported rank probabilities and tamper-evidence language were not adopted. CLAUDE_NEXT_TASK.md gives the separate worker a narrow demo-review assignment.
+- Exact-path Git trust was added for the user account; first source checkpoint is 8d64800 under the user's authorship. Local credential files remain ignored. Final source backup and judge access are tracked separately.
+- Independent JUDGE_VERDICT.md was reviewed. The demo now ends with the exportable test; unsupported rank probabilities and tamper-evidence language were not adopted. Claude Opus 5 completed CLAUDE_NEXT_TASK.md and delivered CLAUDE_DEMO_REVIEW.md; its concrete walkthrough/export findings were integrated.
+- September 6 independent work: neutral stage priorities replace answer-shaped prompts; hosted config/start degrade safely if runtime loading fails; one shared regression/report generator serves browser, server and CLI. A Node-built-ins recorded viewer serves built assets without model dependencies. Changed imported inputs, visible save link, desktop/mobile view and app-server-stopped import were checked with a controlled artifact, not a genuine AI run.
+- A fresh local Git clone of 8d64800 installed 145 packages from the user's pnpm cache with a frozen lockfile and zero downloads, then passed build and fixture checks. Final source revision verification is tracked in VERIFICATION.md. This does not prove an external judge can access the repository or a real run works without internet.
+- DEMO.md now contains exact regression, corrected-fixture, evaluation and recorded-viewer commands. SUBMISSION.md is an unsubmitted entry draft. User is handling manual prerequisites; no extra plugins are currently needed.
 
 ## Next evidence to record
 

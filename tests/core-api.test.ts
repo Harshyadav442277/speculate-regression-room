@@ -27,6 +27,8 @@ test('HTTP judge path streams evidence, exports a failing regression and verifie
   const app = await serve();
   try {
     assert.equal((await fetch(`${app.url}/`)).status, 200);
+    const exporter = await fetch(`${app.url}/export.js`);
+    assert.equal(exporter.status, 200); assert.match(await exporter.text(), /export function regressionScript/);
     const start = await post(`${app.url}/api/run`, payload, app.url); assert.equal(start.status, 202);
     const { ticket } = await start.json() as { ticket: string };
     const stream = await fetch(`${app.url}/api/run/${ticket}/events`);

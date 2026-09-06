@@ -7,9 +7,10 @@ Updated September 6. Decision fixed September 5, approximately 22:35 IST. The sc
 - Built: pinned dependencies, installed Mozaik runtime, three policies, executable evidence, exports, local UI/API and Vercel streaming handlers.
 - Checked: controlled runtime and HTTP tests, local browser journey and corrected-case execution. Final counts and hosted checks are in VERIFICATION.md.
 - Blocked on model access: first real investigation, natural peer-driven action change, comparative evaluation and a real saved demonstration.
-- Still required: fresh-checkout verification, full dead-network rehearsal, genuine video, accessible source repository, dashboard confirmation and submission.
+- Checked independently of credentials: fresh local Git checkout with frozen cached install, saved-run viewer with the application server stopped after load, changed inputs, and phone-sized layout. The latest source checkpoint will be rechecked before handoff.
+- Still required: full dead-network rehearsal with a genuine recording, video, judge access to source, dashboard confirmation and submission.
 
-Claude Opus 5 is directly assigned runtime checks through CLAUDE_DEPLOY_TASK.md. Codex owns integration and Vercel deployment. Provider access and participant-dashboard details require the user's help.
+Claude Opus 5 completed its runtime tasks and CLAUDE_NEXT_TASK.md demonstration review. Codex incorporated the concrete findings and owns final integration, source backup and submission preparation. The user is handling the supplied deployment command, provider access and participant-dashboard details.
 
 ## Schedule authority
 

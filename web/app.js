@@ -1,3 +1,4 @@
+import { regressionScript, markdownReport } from './export.js';
 const $ = selector => document.querySelector(selector);
 const state = { ready: false, busy: false, ticket: null, artifact: null, evidence: [], events: [], seen: new Set(), stream: null, imported: false, policy: 'cooperative', transport: 'event-source', streamAbort: null, generation: 0 };
 const cents = value => `${Number(value).toLocaleString('en-US')}¢`;
@@ -18,6 +19,7 @@ function controls() {
   for (const input of $('#run-form').querySelectorAll('input,select')) input.disabled = state.busy;
 }
 function reset() {
+  $('#download-area').replaceChildren(); $('#download-area').hidden = true;
   state.generation++; state.streamAbort?.abort(); state.streamAbort = null;
   state.stream?.close(); state.stream = null; state.artifact = null; state.evidence = []; state.events = []; state.seen.clear();
   $('#report-area').hidden = true; $('#revisions').replaceChildren(element('p', 'A revised action will appear here with the peer result that caused it.', 'empty-text'));
@@ -71,6 +73,8 @@ function appendEvent(event) {
   }
 }
 function showArtifact(artifact, imported = false) {
+  for (const [name, value] of Object.entries(artifact.configuration.failingInput)) $(`[name="${name}"]`).value = value;
+  $('[name="fixture"]').value = artifact.configuration.fixture; $('[name="policy"]').value = artifact.configuration.policy;
   state.artifact = artifact; state.busy = false; state.imported = imported; state.stream?.close(); state.stream = null;
   state.evidence = artifact.evidence; renderEvidence();
   for (const card of document.querySelectorAll('.agent')) card.classList.remove('working');
@@ -180,21 +184,22 @@ $('#verify').addEventListener('click', async () => {
   catch (error) { if (state.generation === generation) text('#verification', error.message); }
   finally { if (state.generation === generation) $('#verify').disabled = false; }
 });
-function download(name, value, type = 'text/plain') { const url = URL.createObjectURL(new Blob([value], { type })); const anchor = element('a'); anchor.href = url; anchor.download = name; anchor.click(); setTimeout(() => URL.revokeObjectURL(url), 1000); }
+function download(name, value, type = 'text/plain') {
+  const url = URL.createObjectURL(new Blob([value], { type }));
+  const anchor = element('a', `Save ${name}`); anchor.href = url; anchor.download = name;
+  const area = $('#download-area'); area.replaceChildren(element('span', 'Your file is ready. '), anchor); area.hidden = false;
+  anchor.click();
+  // Keep the explicit save link available when automatic downloading is unsupported.
+  window.addEventListener('pagehide', () => URL.revokeObjectURL(url), { once: true });
+}
 $('#export-json').addEventListener('click', () => download('run.json', JSON.stringify(state.artifact, null, 2), 'application/json'));
-$('#export-report').addEventListener('click', async () => {
-  if (!state.imported && state.ticket && state.transport !== 'post-stream') { const response = await fetch(`/api/run/${state.ticket}/report`); if (response.ok) { download('report.md', await response.text()); return; } }
-  const a = state.artifact; download('report.md', `# SPECULATE investigation\n\nRun: ${a.runId}\nMode: ${a.execution}\nStatus: ${a.status}\n\n${Object.entries(a.conclusions).map(([agent, c]) => `## ${agent}\n\n${c.summary}\n\nEvidence: ${c.evidenceIds.join(', ')}\nUnresolved: ${c.unresolved.join('; ')}`).join('\n\n')}\n\nObserved evidence and ordered events are available in the JSON export. Model conclusions are not independently verified causes.\n`);
-});
-$('#export-regression').addEventListener('click', async () => {
-  if (!state.imported && state.ticket && state.transport !== 'post-stream') { const response = await fetch(`/api/run/${state.ticket}/regression`); if (response.ok) { download('regression.mjs', await response.text()); return; } }
-  const cases = state.artifact.evidence.map(e => ({ input: e.input, expectedCents: e.expectedCents }));
-  download('regression.mjs', `// Captured SPECULATE cases. No model calls.\n// node regression.mjs http://127.0.0.1:4318/quote\nconst cases=${JSON.stringify(cases)};\nconst url=new URL(process.argv[2]??'http://127.0.0.1:4318/quote');\nif(!['http:','https:'].includes(url.protocol)||url.username||url.password)throw new Error('Provide an HTTP endpoint without credentials');\nlet failures=0;\nfor(const c of cases){try{const r=await fetch(url,{method:'POST',redirect:'error',headers:{'Content-Type':'application/json'},body:JSON.stringify(c.input),signal:AbortSignal.timeout(5000)});if(!r.ok)throw new Error('HTTP '+r.status);const a=await r.json();const passed=Number.isSafeInteger(a?.totalCents)&&a.totalCents===c.expectedCents;if(!passed)failures++;console.log({expected:c.expectedCents,actual:a.totalCents,passed});}catch(e){failures++;console.log({passed:false,error:e.message});}}\nprocess.exitCode=failures?1:0;\n`);
-});
+$('#export-report').addEventListener('click', () => download('report.md', markdownReport(state.artifact)));
+$('#export-regression').addEventListener('click', () => download('regression.mjs', regressionScript(state.artifact)));
 function validateArtifact(value) {
   if (!value || value.schemaVersion !== 1 || typeof value.runId !== 'string' || !['live','test'].includes(value.execution)
     || !['completed','incomplete','cancelled'].includes(value.status) || !Array.isArray(value.evidence) || value.evidence.length > 100
     || !Array.isArray(value.events) || value.events.length > 10000 || !value.metrics || !value.configuration || !value.conclusions) throw new Error('This file is not a supported SPECULATE run.');
+  validateStartInput({ fixture: value.configuration.fixture, policy: value.configuration.policy, failingInput: value.configuration.failingInput });
   for (const e of value.evidence) if (!e || typeof e.id !== 'string' || typeof e.purpose !== 'string' || !Number.isInteger(e.revision) || !Number.isSafeInteger(e.actualCents) || !Number.isSafeInteger(e.expectedCents) || typeof e.passed !== 'boolean') throw new Error('A recorded observation is malformed.');
   for (const e of value.events) if (!e || !Number.isInteger(e.sequence) || typeof e.elapsedMs !== 'number' || typeof e.type !== 'string' || !e.data) throw new Error('A recorded event is malformed.');
   for (const c of Object.values(value.conclusions)) if (!c || typeof c.summary !== 'string' || !Array.isArray(c.evidenceIds) || !Array.isArray(c.unresolved)) throw new Error('A recorded conclusion is malformed.');
@@ -216,7 +221,7 @@ try {
   const config = await request('/api/config'); state.ready = config.ready; state.transport = config.transport ?? 'event-source';
   $('#access-label').hidden = !config.requiresAccessCode;
   const locationLabel = state.transport === 'post-stream' ? 'Hosted' : 'Local';
-  text('#mode', config.ready ? `${locationLabel} · ready` : `${locationLabel} · setup needed`);
+  text('#mode', config.recordedOnly ? 'Recorded viewer' : config.ready ? `${locationLabel} · ready` : `${locationLabel} · setup needed`);
   notice(config.ready ? `Ready to investigate with ${config.model}. The selected fault label is kept out of the agents’ context.` : (config.reason ?? 'Configure the model connection and restart the application.'));
 } catch { text('#mode', 'Recorded viewer'); notice('The investigation service is unavailable. Open a saved run to inspect its evidence and export a regression check.'); }
 controls();

@@ -1,6 +1,6 @@
 # SPECULATE — product requirements
 
-Status September 6: application, installed Mozaik runtime, evidence exports and all three controls implemented. Controlled tests pass; real-provider behavior and comparative value remain unverified. Vercel deployment is the chosen delivery path. Decision authority: `FINAL_IDEA.md`; plain-language status: `REVIEW.md`.
+Status September 6: application, installed Mozaik runtime, shared evidence exporters, saved-run viewer and all three controls implemented. Controlled tests and a fresh local installation pass; real-provider behavior and comparative value remain unverified. Vercel deployment is the chosen delivery path. Decision authority: `FINAL_IDEA.md`; plain-language status: `REVIEW.md`.
 
 ## User, problem, and claim
 

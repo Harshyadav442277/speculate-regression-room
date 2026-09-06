@@ -23,6 +23,15 @@ pnpm dev:test
 
 Open http://127.0.0.1:4319. Its page and artifacts say “Controlled test.” Never present it as a real agent run.
 
+For a saved-run viewer with no model connection or package dependencies at runtime:
+
+```sh
+pnpm build
+node scripts/recorded-viewer.mjs
+```
+
+Open http://127.0.0.1:4320 and choose a saved run.json. Build once before losing dependency connectivity. This viewer cannot start investigators or run the corrected-fixture button; use the standalone test below. A genuine model-backed recording is still pending.
+
 ## Useful output
 
 Inspect expected/observed totals and evidence-linked explanations, then export `regression.mjs`, `report.md`, or `run.json`. The corrected-fixture button executes the saved inputs against a prebuilt implementation. It is not an autonomous repair.
@@ -41,7 +50,7 @@ node research/checkout-fixture/quote-service.mjs discount-twice 4318
 node research/checkout-fixture/quote-service.mjs correct 4318
 ```
 
-The regression exits 1 if any captured case fails, and 0 if all pass. Passing captured cases does not prove all inputs are correct.
+Start the same broken variant named in the exported file; use tax-twice for a Tax regression. The regression exits 1 if any captured case fails, and 0 if all pass. Passing captured cases does not prove all inputs are correct. Local, hosted and imported runs share the tested exporter. If an automatic browser download does not start, use its visible Save link or the files written by the investigate command.
 
 ## Checks and evaluation
 
@@ -67,5 +76,7 @@ The owned quote API binds only to loopback and accepts bounded quote inputs, wit
 Vercel is the selected host. An earlier unused Sites registration remains in .openai/hosting.json and is excluded from Vercel uploads. It is not the production deployment.
 
 Read [EXECUTION.md](EXECUTION.md) for ownership and gates, [FINAL_IDEA.md](FINAL_IDEA.md) for scope, and [DEMO.md](DEMO.md) for exact steps. The six project documents and execution board supersede historical idea files. Current integration feedback is in [RUNTIME_REVIEW.md](RUNTIME_REVIEW.md).
+
+[SUBMISSION.md](SUBMISSION.md) contains the entry draft and remaining access checks; it is not a submission confirmation.
 
 Built for the [JigJoy concurrent-agent hackathon](https://build.jigjoy.ai/). Dashboard registration, deadline and private brief remain to be confirmed. The isolated source experiment in `research/runtime-review/` preserves attribution and the MIT license from [Mozaik](https://github.com/jigjoy-ai/mozaik); it is distinct from installed-package and real-provider evidence.

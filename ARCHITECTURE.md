@@ -8,6 +8,12 @@ The same Node/TypeScript investigation code serves two environments. Locally, on
 
 The dependency-free browser surface is in web/; pnpm build copies it into dist/. Vercel bundles api/*.ts separately. GET /api/config reports setup readiness without exposing keys. POST /api/verify recomputes expected values and executes at most twelve captured inputs against the prebuilt corrected fixture. Browser exports contain the full completed artifact; local CLI runs can also save private artifacts to disk.
 
+The canonical report and standalone regression generators live in web/export.js; the typed src/core/report.ts wrapper uses those same functions on the server and CLI. Build and both local servers serve the module explicitly, so hosted/imported exports cannot silently diverge from the tested implementation.
+
+scripts/recorded-viewer.mjs uses only Node built-ins and a fixed list of built assets. It binds to loopback, imports no runtime, and rejects investigation requests. Its saved-run path remains labelled and has no corrected-fixture endpoint. Imported inputs are validated and reflected in the visible form.
+
+Hosted config and investigation handlers load the runtime dynamically. Configuration can return a safe not-ready response even if runtime initialization fails; start validates the request and access code before loading the runtime. This preserves the recorded viewer during a dependency failure without claiming model readiness.
+
 Hosted paid runs require a server-side model key and a private SPECULATE_RUN_TOKEN entered in the page. Each run permits at most twelve model requests and twelve probes within 120 seconds; Vercel allows 180 seconds for cleanup. This access code is a private-demo control, not a public multi-user quota system. Refreshing or losing the stream can lose the final hosted report; there is no durable recovery store. A request already in flight at the provider may finish after cancellation.
 
 ```mermaid
@@ -36,7 +42,7 @@ Runtime imports use the package's shipped dist/index.mjs entry, with its matchin
 
 Use `defineRuntime`, `RuntimeState`, `createAgent`, and the returned loop/membership functions as supported by the actual installed declarations. Upstream source at `8f6b198cfae64026b157a17ed054a0d459abae76` uses `message_received`; some documentation describes older state names. The installed declarations and runtime checks take precedence over copied pseudocode.
 
-Pricing and Tax are model-backed participants with different initial investigation priorities and equal access to the allowed observations. They share evidence through the Mozaik runtime. An observer is instrumentation, not a third model agent.
+Pricing and Tax are model-backed participants with different initial investigation priorities and equal access to the allowed observations. Their priorities name a stage and explicitly say not to assume it is faulty; they do not hint at a doubled operation. They share evidence through the Mozaik runtime. An observer is instrumentation, not a third model agent.
 
 ## Agent-facing tools
 
