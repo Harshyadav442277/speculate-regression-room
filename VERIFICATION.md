@@ -1,5 +1,15 @@
 # Verification record
 
+## September 7: Gemini configuration and production verification
+
+- User supplied a Gemini key in ignored `.env`. Configured `SPECULATE_PROVIDER=gemini`, `SPECULATE_MODEL=gemini-3.5-flash`, `GEMINI_API_KEY`, and a generated private `SPECULATE_RUN_TOKEN` locally and in Vercel Production. Credential values were not printed or committed.
+- Fixed Mozaik 4.0.5's Gemini mapper dropping opaque thought signatures between tool turns. The per-run adapter preserves original model parts in a WeakMap, outside persisted context items and event artifacts. No dependency was changed.
+- `pnpm test`: 36 passed, 0 failed. `pnpm build`: passed including typecheck. New regression check verifies signature round trips and isolation between separate calls.
+- Production deployment `dpl_2cyVoGvP1d4oYbVtUtaoMgW5BjcC` is READY at https://speculate-regression-room.vercel.app. The earlier startup/deployment blocker is resolved. `/api/config` returns ready:true for Gemini; starting without the private access code returns 403; an authorized start returns a live 200 event stream.
+- Hosted run `b04c0410-ba79-40f7-a52e-2ab791f9cd42` executed three real probes, then stopped incomplete on provider HTTP 429 after six model requests. All three captured cases passed the hosted corrected-fixture verification. Artifacts are retained under ignored `artifacts/private/hosted-b04c0410-ba79-40f7-a52e-2ab791f9cd42/`.
+- Final diagnostic confirmed `GenerateRequestsPerDayPerProjectPerModel-FreeTier`, quota 20 for Gemini 3.5 Flash, is exhausted. The user confirmed this key uses the free tier. A separate attempt received transient provider HTTP 503 overload. No more model requests should be made until quota is available. Billing was not enabled by Codex.
+- A complete live investigation, useful cooperation, comparative advantage, recording and submission are still unverified. The historical September 6 setup statements below are superseded by this section. The deployed fix remains in the local working tree; no commit or remote push was performed in this configuration task.
+
 Updated September 6, 16:40 IST. Verification is separated from submission and ranking evidence.
 
 ## Latest integration and deployment

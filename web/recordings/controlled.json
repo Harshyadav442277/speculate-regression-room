@@ -1,0 +1,1204 @@
+{
+  "schemaVersion": 1,
+  "appVersion": "0.1.0",
+  "mozaikVersion": "4.0.5",
+  "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+  "execution": "test",
+  "status": "completed",
+  "configuration": {
+    "policy": "cooperative",
+    "fixture": "discount-twice",
+    "failingInput": {
+      "unitPriceCents": 10000,
+      "quantity": 2,
+      "discountBps": 1000,
+      "taxBps": 500
+    },
+    "maxProbes": 12,
+    "maxModelRequests": 12,
+    "maxRunMs": 120000
+  },
+  "events": [
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 1,
+      "elapsedMs": 0,
+      "timestamp": "2026-09-07T05:05:42.215Z",
+      "type": "run.started",
+      "data": {
+        "execution": "test",
+        "policy": "cooperative",
+        "maxProbes": 12,
+        "maxModelRequests": 12,
+        "maxRunMs": 120000,
+        "failingInput": {
+          "unitPriceCents": 10000,
+          "quantity": 2,
+          "discountBps": 1000,
+          "taxBps": 500
+        }
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 2,
+      "elapsedMs": 1,
+      "timestamp": "2026-09-07T05:05:42.216Z",
+      "type": "probe.started",
+      "agentId": "generalist",
+      "data": {
+        "actionId": "97103b84-070b-48c8-aa69-bb86e4d79ce2",
+        "input": {
+          "unitPriceCents": 10000,
+          "quantity": 2,
+          "discountBps": 1000,
+          "taxBps": 500
+        },
+        "purpose": "Reproduce the submitted input against the written contract.",
+        "evidenceRevision": 0
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 3,
+      "elapsedMs": 18,
+      "timestamp": "2026-09-07T05:05:42.232Z",
+      "type": "probe.completed",
+      "agentId": "generalist",
+      "data": {
+        "actionId": "97103b84-070b-48c8-aa69-bb86e4d79ce2",
+        "evidenceId": "a9842745-4600-4e32-81da-e80aa50763d3",
+        "evidenceRevision": 1,
+        "evidence": {
+          "id": "a9842745-4600-4e32-81da-e80aa50763d3",
+          "revision": 1,
+          "agentId": "generalist",
+          "input": {
+            "unitPriceCents": 10000,
+            "quantity": 2,
+            "discountBps": 1000,
+            "taxBps": 500
+          },
+          "expectedCents": 18900,
+          "actualCents": 17010,
+          "passed": false,
+          "purpose": "Reproduce the submitted input against the written contract.",
+          "elapsedMs": 18
+        }
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 4,
+      "elapsedMs": 18,
+      "timestamp": "2026-09-07T05:05:42.233Z",
+      "type": "runtime.started",
+      "data": {
+        "policy": "cooperative",
+        "provider": "test",
+        "model": "deterministic-test-double",
+        "execution": "test",
+        "maxModelRequests": 12,
+        "modelTimeoutMs": 25000
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 5,
+      "elapsedMs": 19,
+      "timestamp": "2026-09-07T05:05:42.233Z",
+      "type": "runtime.native",
+      "agentId": "pricing",
+      "data": {
+        "native": "participant.joined",
+        "participantId": "3c1e234f-017a-45cc-ad0c-a2ccc7e6454e"
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 6,
+      "elapsedMs": 19,
+      "timestamp": "2026-09-07T05:05:42.233Z",
+      "type": "agent.started",
+      "agentId": "pricing",
+      "data": {
+        "name": "Pricing investigator",
+        "reconsider": true
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 7,
+      "elapsedMs": 20,
+      "timestamp": "2026-09-07T05:05:42.235Z",
+      "type": "runtime.native",
+      "agentId": "pricing",
+      "data": {
+        "native": "message_received.started",
+        "participantId": "3c1e234f-017a-45cc-ad0c-a2ccc7e6454e",
+        "loopId": "55ab4b28-4521-4fab-8cb9-a0761b788838"
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 8,
+      "elapsedMs": 20,
+      "timestamp": "2026-09-07T05:05:42.235Z",
+      "type": "runtime.native",
+      "agentId": "tax",
+      "data": {
+        "native": "participant.joined",
+        "participantId": "4c1dbb32-4f50-43ef-9718-77528ec15328"
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 9,
+      "elapsedMs": 20,
+      "timestamp": "2026-09-07T05:05:42.235Z",
+      "type": "agent.started",
+      "agentId": "tax",
+      "data": {
+        "name": "Tax investigator",
+        "reconsider": true
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 10,
+      "elapsedMs": 20,
+      "timestamp": "2026-09-07T05:05:42.235Z",
+      "type": "runtime.native",
+      "agentId": "tax",
+      "data": {
+        "native": "message_received.started",
+        "participantId": "4c1dbb32-4f50-43ef-9718-77528ec15328",
+        "loopId": "cad4b17e-9d1b-412f-9786-e30d4266a47f"
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 11,
+      "elapsedMs": 21,
+      "timestamp": "2026-09-07T05:05:42.236Z",
+      "type": "runtime.native",
+      "agentId": "pricing",
+      "data": {
+        "native": "interception.started",
+        "participantId": "3c1e234f-017a-45cc-ad0c-a2ccc7e6454e",
+        "loopId": "55ab4b28-4521-4fab-8cb9-a0761b788838"
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 12,
+      "elapsedMs": 21,
+      "timestamp": "2026-09-07T05:05:42.236Z",
+      "type": "model.requested",
+      "agentId": "pricing",
+      "data": {
+        "reason": "agent-loop-inference",
+        "evidenceRevision": 1,
+        "evidenceDelivered": 1
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 13,
+      "elapsedMs": 21,
+      "timestamp": "2026-09-07T05:05:42.236Z",
+      "type": "runtime.native",
+      "agentId": "tax",
+      "data": {
+        "native": "interception.started",
+        "participantId": "4c1dbb32-4f50-43ef-9718-77528ec15328",
+        "loopId": "cad4b17e-9d1b-412f-9786-e30d4266a47f"
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 14,
+      "elapsedMs": 21,
+      "timestamp": "2026-09-07T05:05:42.236Z",
+      "type": "model.requested",
+      "agentId": "tax",
+      "data": {
+        "reason": "agent-loop-inference",
+        "evidenceRevision": 1,
+        "evidenceDelivered": 1
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 15,
+      "elapsedMs": 21,
+      "timestamp": "2026-09-07T05:05:42.236Z",
+      "type": "runtime.native",
+      "agentId": "pricing",
+      "data": {
+        "native": "interception.finished",
+        "participantId": "3c1e234f-017a-45cc-ad0c-a2ccc7e6454e",
+        "loopId": "55ab4b28-4521-4fab-8cb9-a0761b788838"
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 16,
+      "elapsedMs": 21,
+      "timestamp": "2026-09-07T05:05:42.236Z",
+      "type": "runtime.native",
+      "agentId": "pricing",
+      "data": {
+        "native": "inference.started",
+        "participantId": "3c1e234f-017a-45cc-ad0c-a2ccc7e6454e",
+        "loopId": "55ab4b28-4521-4fab-8cb9-a0761b788838"
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 17,
+      "elapsedMs": 22,
+      "timestamp": "2026-09-07T05:05:42.236Z",
+      "type": "runtime.native",
+      "agentId": "tax",
+      "data": {
+        "native": "interception.finished",
+        "participantId": "4c1dbb32-4f50-43ef-9718-77528ec15328",
+        "loopId": "cad4b17e-9d1b-412f-9786-e30d4266a47f"
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 18,
+      "elapsedMs": 22,
+      "timestamp": "2026-09-07T05:05:42.237Z",
+      "type": "runtime.native",
+      "agentId": "tax",
+      "data": {
+        "native": "inference.started",
+        "participantId": "4c1dbb32-4f50-43ef-9718-77528ec15328",
+        "loopId": "cad4b17e-9d1b-412f-9786-e30d4266a47f"
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 19,
+      "elapsedMs": 22,
+      "timestamp": "2026-09-07T05:05:42.237Z",
+      "type": "runtime.native",
+      "agentId": "tax",
+      "data": {
+        "native": "inference.completed",
+        "participantId": "4c1dbb32-4f50-43ef-9718-77528ec15328",
+        "loopId": "cad4b17e-9d1b-412f-9786-e30d4266a47f"
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 20,
+      "elapsedMs": 22,
+      "timestamp": "2026-09-07T05:05:42.237Z",
+      "type": "runtime.native",
+      "agentId": "tax",
+      "data": {
+        "native": "interception.started",
+        "participantId": "4c1dbb32-4f50-43ef-9718-77528ec15328",
+        "loopId": "cad4b17e-9d1b-412f-9786-e30d4266a47f"
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 21,
+      "elapsedMs": 22,
+      "timestamp": "2026-09-07T05:05:42.237Z",
+      "type": "runtime.native",
+      "agentId": "tax",
+      "data": {
+        "native": "interception.finished",
+        "participantId": "4c1dbb32-4f50-43ef-9718-77528ec15328",
+        "loopId": "cad4b17e-9d1b-412f-9786-e30d4266a47f"
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 22,
+      "elapsedMs": 22,
+      "timestamp": "2026-09-07T05:05:42.237Z",
+      "type": "runtime.native",
+      "agentId": "tax",
+      "data": {
+        "native": "function_call.started",
+        "participantId": "4c1dbb32-4f50-43ef-9718-77528ec15328",
+        "loopId": "cad4b17e-9d1b-412f-9786-e30d4266a47f"
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 23,
+      "elapsedMs": 22,
+      "timestamp": "2026-09-07T05:05:42.237Z",
+      "type": "probe.started",
+      "agentId": "tax",
+      "data": {
+        "actionId": "7e552338-017d-4a04-b6b1-efed392dc793",
+        "input": {
+          "unitPriceCents": 10000,
+          "quantity": 2,
+          "discountBps": 0,
+          "taxBps": 500
+        },
+        "purpose": "Controlled probe: tax without discount.",
+        "evidenceRevision": 1
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 24,
+      "elapsedMs": 28,
+      "timestamp": "2026-09-07T05:05:42.242Z",
+      "type": "probe.completed",
+      "agentId": "tax",
+      "data": {
+        "actionId": "7e552338-017d-4a04-b6b1-efed392dc793",
+        "evidenceId": "83a927e7-f869-4a1e-a85e-37b596ed533e",
+        "evidenceRevision": 2,
+        "evidence": {
+          "id": "83a927e7-f869-4a1e-a85e-37b596ed533e",
+          "revision": 2,
+          "agentId": "tax",
+          "input": {
+            "unitPriceCents": 10000,
+            "quantity": 2,
+            "discountBps": 0,
+            "taxBps": 500
+          },
+          "expectedCents": 21000,
+          "actualCents": 21000,
+          "passed": true,
+          "purpose": "Controlled probe: tax without discount.",
+          "elapsedMs": 28
+        }
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 25,
+      "elapsedMs": 28,
+      "timestamp": "2026-09-07T05:05:42.243Z",
+      "type": "runtime.native",
+      "agentId": "tax",
+      "data": {
+        "native": "function_call.completed",
+        "participantId": "4c1dbb32-4f50-43ef-9718-77528ec15328",
+        "loopId": "cad4b17e-9d1b-412f-9786-e30d4266a47f"
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 26,
+      "elapsedMs": 29,
+      "timestamp": "2026-09-07T05:05:42.243Z",
+      "type": "runtime.native",
+      "agentId": "tax",
+      "data": {
+        "native": "interception.started",
+        "participantId": "4c1dbb32-4f50-43ef-9718-77528ec15328",
+        "loopId": "cad4b17e-9d1b-412f-9786-e30d4266a47f"
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 27,
+      "elapsedMs": 29,
+      "timestamp": "2026-09-07T05:05:42.244Z",
+      "type": "model.requested",
+      "agentId": "tax",
+      "data": {
+        "reason": "agent-loop-inference",
+        "evidenceRevision": 2,
+        "evidenceDelivered": 1
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 28,
+      "elapsedMs": 29,
+      "timestamp": "2026-09-07T05:05:42.244Z",
+      "type": "runtime.native",
+      "agentId": "tax",
+      "data": {
+        "native": "interception.finished",
+        "participantId": "4c1dbb32-4f50-43ef-9718-77528ec15328",
+        "loopId": "cad4b17e-9d1b-412f-9786-e30d4266a47f"
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 29,
+      "elapsedMs": 29,
+      "timestamp": "2026-09-07T05:05:42.244Z",
+      "type": "runtime.native",
+      "agentId": "tax",
+      "data": {
+        "native": "inference.started",
+        "participantId": "4c1dbb32-4f50-43ef-9718-77528ec15328",
+        "loopId": "cad4b17e-9d1b-412f-9786-e30d4266a47f"
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 30,
+      "elapsedMs": 29,
+      "timestamp": "2026-09-07T05:05:42.244Z",
+      "type": "runtime.native",
+      "agentId": "tax",
+      "data": {
+        "native": "inference.completed",
+        "participantId": "4c1dbb32-4f50-43ef-9718-77528ec15328",
+        "loopId": "cad4b17e-9d1b-412f-9786-e30d4266a47f"
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 31,
+      "elapsedMs": 29,
+      "timestamp": "2026-09-07T05:05:42.244Z",
+      "type": "runtime.native",
+      "agentId": "tax",
+      "data": {
+        "native": "interception.started",
+        "participantId": "4c1dbb32-4f50-43ef-9718-77528ec15328",
+        "loopId": "cad4b17e-9d1b-412f-9786-e30d4266a47f"
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 32,
+      "elapsedMs": 29,
+      "timestamp": "2026-09-07T05:05:42.244Z",
+      "type": "runtime.native",
+      "agentId": "tax",
+      "data": {
+        "native": "interception.finished",
+        "participantId": "4c1dbb32-4f50-43ef-9718-77528ec15328",
+        "loopId": "cad4b17e-9d1b-412f-9786-e30d4266a47f"
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 33,
+      "elapsedMs": 29,
+      "timestamp": "2026-09-07T05:05:42.244Z",
+      "type": "runtime.native",
+      "agentId": "tax",
+      "data": {
+        "native": "function_call.started",
+        "participantId": "4c1dbb32-4f50-43ef-9718-77528ec15328",
+        "loopId": "cad4b17e-9d1b-412f-9786-e30d4266a47f"
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 34,
+      "elapsedMs": 30,
+      "timestamp": "2026-09-07T05:05:42.245Z",
+      "type": "agent.completed",
+      "agentId": "tax",
+      "data": {
+        "conclusion": {
+          "summary": "Scripted conclusion from the deterministic test double. Not a model result.",
+          "evidenceIds": [
+            "a9842745-4600-4e32-81da-e80aa50763d3",
+            "83a927e7-f869-4a1e-a85e-37b596ed533e"
+          ],
+          "unresolved": [
+            "Everything: this is a test double, not an investigation."
+          ]
+        }
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 35,
+      "elapsedMs": 30,
+      "timestamp": "2026-09-07T05:05:42.245Z",
+      "type": "runtime.native",
+      "agentId": "tax",
+      "data": {
+        "native": "function_call.completed",
+        "participantId": "4c1dbb32-4f50-43ef-9718-77528ec15328",
+        "loopId": "cad4b17e-9d1b-412f-9786-e30d4266a47f"
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 36,
+      "elapsedMs": 30,
+      "timestamp": "2026-09-07T05:05:42.245Z",
+      "type": "runtime.native",
+      "agentId": "tax",
+      "data": {
+        "native": "interception.started",
+        "participantId": "4c1dbb32-4f50-43ef-9718-77528ec15328",
+        "loopId": "cad4b17e-9d1b-412f-9786-e30d4266a47f"
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 37,
+      "elapsedMs": 30,
+      "timestamp": "2026-09-07T05:05:42.245Z",
+      "type": "runtime.native",
+      "agentId": "tax",
+      "data": {
+        "native": "interception.finished",
+        "participantId": "4c1dbb32-4f50-43ef-9718-77528ec15328",
+        "loopId": "cad4b17e-9d1b-412f-9786-e30d4266a47f"
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 38,
+      "elapsedMs": 30,
+      "timestamp": "2026-09-07T05:05:42.245Z",
+      "type": "runtime.native",
+      "agentId": "tax",
+      "data": {
+        "native": "model.answer",
+        "participantId": "4c1dbb32-4f50-43ef-9718-77528ec15328",
+        "loopId": "cad4b17e-9d1b-412f-9786-e30d4266a47f"
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 39,
+      "elapsedMs": 177,
+      "timestamp": "2026-09-07T05:05:42.392Z",
+      "type": "runtime.native",
+      "agentId": "pricing",
+      "data": {
+        "native": "inference.completed",
+        "participantId": "3c1e234f-017a-45cc-ad0c-a2ccc7e6454e",
+        "loopId": "55ab4b28-4521-4fab-8cb9-a0761b788838"
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 40,
+      "elapsedMs": 177,
+      "timestamp": "2026-09-07T05:05:42.392Z",
+      "type": "runtime.native",
+      "agentId": "pricing",
+      "data": {
+        "native": "interception.started",
+        "participantId": "3c1e234f-017a-45cc-ad0c-a2ccc7e6454e",
+        "loopId": "55ab4b28-4521-4fab-8cb9-a0761b788838"
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 41,
+      "elapsedMs": 177,
+      "timestamp": "2026-09-07T05:05:42.392Z",
+      "type": "model.requested",
+      "agentId": "pricing",
+      "data": {
+        "reason": "boundary-reconsideration",
+        "evidenceRevision": 2
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 42,
+      "elapsedMs": 178,
+      "timestamp": "2026-09-07T05:05:42.393Z",
+      "type": "action.reconsidered",
+      "agentId": "pricing",
+      "data": {
+        "before": {
+          "tool": "probe_quote",
+          "args": "{\"unitPriceCents\":10000,\"quantity\":2,\"discountBps\":0,\"taxBps\":0,\"purpose\":\"Controlled probe: baseline without discount or tax.\"}"
+        },
+        "after": {
+          "tool": "probe_quote",
+          "args": "{\"unitPriceCents\":10000,\"quantity\":2,\"discountBps\":1000,\"taxBps\":0,\"purpose\":\"Controlled revised probe: discount without tax.\"}"
+        },
+        "changed": true,
+        "peerEvidenceIds": [
+          "83a927e7-f869-4a1e-a85e-37b596ed533e"
+        ],
+        "evidenceRevision": 2,
+        "note": "peer evidence changed the pending action"
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 43,
+      "elapsedMs": 179,
+      "timestamp": "2026-09-07T05:05:42.394Z",
+      "type": "runtime.native",
+      "agentId": "pricing",
+      "data": {
+        "native": "interception.finished",
+        "participantId": "3c1e234f-017a-45cc-ad0c-a2ccc7e6454e",
+        "loopId": "55ab4b28-4521-4fab-8cb9-a0761b788838"
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 44,
+      "elapsedMs": 179,
+      "timestamp": "2026-09-07T05:05:42.394Z",
+      "type": "runtime.native",
+      "agentId": "pricing",
+      "data": {
+        "native": "function_call.started",
+        "participantId": "3c1e234f-017a-45cc-ad0c-a2ccc7e6454e",
+        "loopId": "55ab4b28-4521-4fab-8cb9-a0761b788838"
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 45,
+      "elapsedMs": 179,
+      "timestamp": "2026-09-07T05:05:42.394Z",
+      "type": "probe.started",
+      "agentId": "pricing",
+      "data": {
+        "actionId": "620e531f-a8ad-4fbd-88ae-8be824aa0254",
+        "input": {
+          "unitPriceCents": 10000,
+          "quantity": 2,
+          "discountBps": 1000,
+          "taxBps": 0
+        },
+        "purpose": "Controlled revised probe: discount without tax.",
+        "evidenceRevision": 2
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 46,
+      "elapsedMs": 194,
+      "timestamp": "2026-09-07T05:05:42.409Z",
+      "type": "probe.completed",
+      "agentId": "pricing",
+      "data": {
+        "actionId": "620e531f-a8ad-4fbd-88ae-8be824aa0254",
+        "evidenceId": "af3734c6-a6f8-4c2a-aed3-6e609e790fe0",
+        "evidenceRevision": 3,
+        "evidence": {
+          "id": "af3734c6-a6f8-4c2a-aed3-6e609e790fe0",
+          "revision": 3,
+          "agentId": "pricing",
+          "input": {
+            "unitPriceCents": 10000,
+            "quantity": 2,
+            "discountBps": 1000,
+            "taxBps": 0
+          },
+          "expectedCents": 18000,
+          "actualCents": 16200,
+          "passed": false,
+          "purpose": "Controlled revised probe: discount without tax.",
+          "elapsedMs": 194
+        }
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 47,
+      "elapsedMs": 194,
+      "timestamp": "2026-09-07T05:05:42.409Z",
+      "type": "runtime.native",
+      "agentId": "pricing",
+      "data": {
+        "native": "function_call.completed",
+        "participantId": "3c1e234f-017a-45cc-ad0c-a2ccc7e6454e",
+        "loopId": "55ab4b28-4521-4fab-8cb9-a0761b788838"
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 48,
+      "elapsedMs": 194,
+      "timestamp": "2026-09-07T05:05:42.409Z",
+      "type": "runtime.native",
+      "agentId": "pricing",
+      "data": {
+        "native": "interception.started",
+        "participantId": "3c1e234f-017a-45cc-ad0c-a2ccc7e6454e",
+        "loopId": "55ab4b28-4521-4fab-8cb9-a0761b788838"
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 49,
+      "elapsedMs": 194,
+      "timestamp": "2026-09-07T05:05:42.409Z",
+      "type": "model.requested",
+      "agentId": "pricing",
+      "data": {
+        "reason": "agent-loop-inference",
+        "evidenceRevision": 3,
+        "evidenceDelivered": 2
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 50,
+      "elapsedMs": 194,
+      "timestamp": "2026-09-07T05:05:42.409Z",
+      "type": "runtime.native",
+      "agentId": "pricing",
+      "data": {
+        "native": "interception.finished",
+        "participantId": "3c1e234f-017a-45cc-ad0c-a2ccc7e6454e",
+        "loopId": "55ab4b28-4521-4fab-8cb9-a0761b788838"
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 51,
+      "elapsedMs": 194,
+      "timestamp": "2026-09-07T05:05:42.409Z",
+      "type": "runtime.native",
+      "agentId": "pricing",
+      "data": {
+        "native": "inference.started",
+        "participantId": "3c1e234f-017a-45cc-ad0c-a2ccc7e6454e",
+        "loopId": "55ab4b28-4521-4fab-8cb9-a0761b788838"
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 52,
+      "elapsedMs": 194,
+      "timestamp": "2026-09-07T05:05:42.409Z",
+      "type": "runtime.native",
+      "agentId": "pricing",
+      "data": {
+        "native": "inference.completed",
+        "participantId": "3c1e234f-017a-45cc-ad0c-a2ccc7e6454e",
+        "loopId": "55ab4b28-4521-4fab-8cb9-a0761b788838"
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 53,
+      "elapsedMs": 194,
+      "timestamp": "2026-09-07T05:05:42.409Z",
+      "type": "runtime.native",
+      "agentId": "pricing",
+      "data": {
+        "native": "interception.started",
+        "participantId": "3c1e234f-017a-45cc-ad0c-a2ccc7e6454e",
+        "loopId": "55ab4b28-4521-4fab-8cb9-a0761b788838"
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 54,
+      "elapsedMs": 194,
+      "timestamp": "2026-09-07T05:05:42.409Z",
+      "type": "runtime.native",
+      "agentId": "pricing",
+      "data": {
+        "native": "interception.finished",
+        "participantId": "3c1e234f-017a-45cc-ad0c-a2ccc7e6454e",
+        "loopId": "55ab4b28-4521-4fab-8cb9-a0761b788838"
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 55,
+      "elapsedMs": 194,
+      "timestamp": "2026-09-07T05:05:42.409Z",
+      "type": "runtime.native",
+      "agentId": "pricing",
+      "data": {
+        "native": "function_call.started",
+        "participantId": "3c1e234f-017a-45cc-ad0c-a2ccc7e6454e",
+        "loopId": "55ab4b28-4521-4fab-8cb9-a0761b788838"
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 56,
+      "elapsedMs": 194,
+      "timestamp": "2026-09-07T05:05:42.409Z",
+      "type": "probe.started",
+      "agentId": "pricing",
+      "data": {
+        "actionId": "8e312f69-5ee2-4d84-8b00-23ed1333a4e7",
+        "input": {
+          "unitPriceCents": 10000,
+          "quantity": 2,
+          "discountBps": 0,
+          "taxBps": 0
+        },
+        "purpose": "Controlled probe: baseline without discount or tax.",
+        "evidenceRevision": 3
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 57,
+      "elapsedMs": 209,
+      "timestamp": "2026-09-07T05:05:42.424Z",
+      "type": "probe.completed",
+      "agentId": "pricing",
+      "data": {
+        "actionId": "8e312f69-5ee2-4d84-8b00-23ed1333a4e7",
+        "evidenceId": "360db4ff-9b0a-42c3-847a-3bb3c570bce3",
+        "evidenceRevision": 4,
+        "evidence": {
+          "id": "360db4ff-9b0a-42c3-847a-3bb3c570bce3",
+          "revision": 4,
+          "agentId": "pricing",
+          "input": {
+            "unitPriceCents": 10000,
+            "quantity": 2,
+            "discountBps": 0,
+            "taxBps": 0
+          },
+          "expectedCents": 20000,
+          "actualCents": 20000,
+          "passed": true,
+          "purpose": "Controlled probe: baseline without discount or tax.",
+          "elapsedMs": 209
+        }
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 58,
+      "elapsedMs": 209,
+      "timestamp": "2026-09-07T05:05:42.424Z",
+      "type": "runtime.native",
+      "agentId": "pricing",
+      "data": {
+        "native": "function_call.completed",
+        "participantId": "3c1e234f-017a-45cc-ad0c-a2ccc7e6454e",
+        "loopId": "55ab4b28-4521-4fab-8cb9-a0761b788838"
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 59,
+      "elapsedMs": 209,
+      "timestamp": "2026-09-07T05:05:42.424Z",
+      "type": "runtime.native",
+      "agentId": "pricing",
+      "data": {
+        "native": "interception.started",
+        "participantId": "3c1e234f-017a-45cc-ad0c-a2ccc7e6454e",
+        "loopId": "55ab4b28-4521-4fab-8cb9-a0761b788838"
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 60,
+      "elapsedMs": 209,
+      "timestamp": "2026-09-07T05:05:42.424Z",
+      "type": "model.requested",
+      "agentId": "pricing",
+      "data": {
+        "reason": "agent-loop-inference",
+        "evidenceRevision": 4,
+        "evidenceDelivered": 1
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 61,
+      "elapsedMs": 209,
+      "timestamp": "2026-09-07T05:05:42.424Z",
+      "type": "runtime.native",
+      "agentId": "pricing",
+      "data": {
+        "native": "interception.finished",
+        "participantId": "3c1e234f-017a-45cc-ad0c-a2ccc7e6454e",
+        "loopId": "55ab4b28-4521-4fab-8cb9-a0761b788838"
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 62,
+      "elapsedMs": 209,
+      "timestamp": "2026-09-07T05:05:42.424Z",
+      "type": "runtime.native",
+      "agentId": "pricing",
+      "data": {
+        "native": "inference.started",
+        "participantId": "3c1e234f-017a-45cc-ad0c-a2ccc7e6454e",
+        "loopId": "55ab4b28-4521-4fab-8cb9-a0761b788838"
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 63,
+      "elapsedMs": 209,
+      "timestamp": "2026-09-07T05:05:42.424Z",
+      "type": "runtime.native",
+      "agentId": "pricing",
+      "data": {
+        "native": "inference.completed",
+        "participantId": "3c1e234f-017a-45cc-ad0c-a2ccc7e6454e",
+        "loopId": "55ab4b28-4521-4fab-8cb9-a0761b788838"
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 64,
+      "elapsedMs": 209,
+      "timestamp": "2026-09-07T05:05:42.424Z",
+      "type": "runtime.native",
+      "agentId": "pricing",
+      "data": {
+        "native": "interception.started",
+        "participantId": "3c1e234f-017a-45cc-ad0c-a2ccc7e6454e",
+        "loopId": "55ab4b28-4521-4fab-8cb9-a0761b788838"
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 65,
+      "elapsedMs": 209,
+      "timestamp": "2026-09-07T05:05:42.424Z",
+      "type": "runtime.native",
+      "agentId": "pricing",
+      "data": {
+        "native": "interception.finished",
+        "participantId": "3c1e234f-017a-45cc-ad0c-a2ccc7e6454e",
+        "loopId": "55ab4b28-4521-4fab-8cb9-a0761b788838"
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 66,
+      "elapsedMs": 209,
+      "timestamp": "2026-09-07T05:05:42.424Z",
+      "type": "runtime.native",
+      "agentId": "pricing",
+      "data": {
+        "native": "function_call.started",
+        "participantId": "3c1e234f-017a-45cc-ad0c-a2ccc7e6454e",
+        "loopId": "55ab4b28-4521-4fab-8cb9-a0761b788838"
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 67,
+      "elapsedMs": 209,
+      "timestamp": "2026-09-07T05:05:42.424Z",
+      "type": "agent.completed",
+      "agentId": "pricing",
+      "data": {
+        "conclusion": {
+          "summary": "Scripted conclusion from the deterministic test double. Not a model result.",
+          "evidenceIds": [
+            "a9842745-4600-4e32-81da-e80aa50763d3",
+            "83a927e7-f869-4a1e-a85e-37b596ed533e",
+            "af3734c6-a6f8-4c2a-aed3-6e609e790fe0",
+            "360db4ff-9b0a-42c3-847a-3bb3c570bce3"
+          ],
+          "unresolved": [
+            "Everything: this is a test double, not an investigation."
+          ]
+        }
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 68,
+      "elapsedMs": 209,
+      "timestamp": "2026-09-07T05:05:42.424Z",
+      "type": "runtime.native",
+      "agentId": "pricing",
+      "data": {
+        "native": "function_call.completed",
+        "participantId": "3c1e234f-017a-45cc-ad0c-a2ccc7e6454e",
+        "loopId": "55ab4b28-4521-4fab-8cb9-a0761b788838"
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 69,
+      "elapsedMs": 209,
+      "timestamp": "2026-09-07T05:05:42.424Z",
+      "type": "runtime.native",
+      "agentId": "pricing",
+      "data": {
+        "native": "interception.started",
+        "participantId": "3c1e234f-017a-45cc-ad0c-a2ccc7e6454e",
+        "loopId": "55ab4b28-4521-4fab-8cb9-a0761b788838"
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 70,
+      "elapsedMs": 209,
+      "timestamp": "2026-09-07T05:05:42.424Z",
+      "type": "runtime.native",
+      "agentId": "pricing",
+      "data": {
+        "native": "interception.finished",
+        "participantId": "3c1e234f-017a-45cc-ad0c-a2ccc7e6454e",
+        "loopId": "55ab4b28-4521-4fab-8cb9-a0761b788838"
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 71,
+      "elapsedMs": 209,
+      "timestamp": "2026-09-07T05:05:42.424Z",
+      "type": "runtime.native",
+      "agentId": "pricing",
+      "data": {
+        "native": "model.answer",
+        "participantId": "3c1e234f-017a-45cc-ad0c-a2ccc7e6454e",
+        "loopId": "55ab4b28-4521-4fab-8cb9-a0761b788838"
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 72,
+      "elapsedMs": 209,
+      "timestamp": "2026-09-07T05:05:42.424Z",
+      "type": "runtime.agent.finished",
+      "agentId": "pricing",
+      "data": {
+        "reconsiderations": 1,
+        "concluded": true,
+        "nativeEventsRecorded": 50
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 73,
+      "elapsedMs": 209,
+      "timestamp": "2026-09-07T05:05:42.424Z",
+      "type": "runtime.agent.finished",
+      "agentId": "tax",
+      "data": {
+        "reconsiderations": 0,
+        "concluded": true,
+        "nativeEventsRecorded": 50
+      }
+    },
+    {
+      "runId": "e4b99d41-82a4-477f-988b-c4789c7fb5b8",
+      "sequence": 74,
+      "elapsedMs": 209,
+      "timestamp": "2026-09-07T05:05:42.424Z",
+      "type": "run.completed",
+      "data": {
+        "modelRequests": 6
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "a9842745-4600-4e32-81da-e80aa50763d3",
+      "revision": 1,
+      "agentId": "generalist",
+      "input": {
+        "unitPriceCents": 10000,
+        "quantity": 2,
+        "discountBps": 1000,
+        "taxBps": 500
+      },
+      "expectedCents": 18900,
+      "actualCents": 17010,
+      "passed": false,
+      "purpose": "Reproduce the submitted input against the written contract.",
+      "elapsedMs": 18
+    },
+    {
+      "id": "83a927e7-f869-4a1e-a85e-37b596ed533e",
+      "revision": 2,
+      "agentId": "tax",
+      "input": {
+        "unitPriceCents": 10000,
+        "quantity": 2,
+        "discountBps": 0,
+        "taxBps": 500
+      },
+      "expectedCents": 21000,
+      "actualCents": 21000,
+      "passed": true,
+      "purpose": "Controlled probe: tax without discount.",
+      "elapsedMs": 28
+    },
+    {
+      "id": "af3734c6-a6f8-4c2a-aed3-6e609e790fe0",
+      "revision": 3,
+      "agentId": "pricing",
+      "input": {
+        "unitPriceCents": 10000,
+        "quantity": 2,
+        "discountBps": 1000,
+        "taxBps": 0
+      },
+      "expectedCents": 18000,
+      "actualCents": 16200,
+      "passed": false,
+      "purpose": "Controlled revised probe: discount without tax.",
+      "elapsedMs": 194
+    },
+    {
+      "id": "360db4ff-9b0a-42c3-847a-3bb3c570bce3",
+      "revision": 4,
+      "agentId": "pricing",
+      "input": {
+        "unitPriceCents": 10000,
+        "quantity": 2,
+        "discountBps": 0,
+        "taxBps": 0
+      },
+      "expectedCents": 20000,
+      "actualCents": 20000,
+      "passed": true,
+      "purpose": "Controlled probe: baseline without discount or tax.",
+      "elapsedMs": 209
+    }
+  ],
+  "conclusions": {
+    "tax": {
+      "summary": "Scripted conclusion from the deterministic test double. Not a model result.",
+      "evidenceIds": [
+        "a9842745-4600-4e32-81da-e80aa50763d3",
+        "83a927e7-f869-4a1e-a85e-37b596ed533e"
+      ],
+      "unresolved": [
+        "Everything: this is a test double, not an investigation."
+      ]
+    },
+    "pricing": {
+      "summary": "Scripted conclusion from the deterministic test double. Not a model result.",
+      "evidenceIds": [
+        "a9842745-4600-4e32-81da-e80aa50763d3",
+        "83a927e7-f869-4a1e-a85e-37b596ed533e",
+        "af3734c6-a6f8-4c2a-aed3-6e609e790fe0",
+        "360db4ff-9b0a-42c3-847a-3bb3c570bce3"
+      ],
+      "unresolved": [
+        "Everything: this is a test double, not an investigation."
+      ]
+    }
+  },
+  "metrics": {
+    "probeExecutions": 4,
+    "probeReuses": 0,
+    "modelRequests": 6,
+    "elapsedMs": 209
+  },
+  "runtime": {
+    "modelRequests": 6,
+    "usage": null,
+    "model": "deterministic-test-double",
+    "provider": "test"
+  },
+  "error": null
+}

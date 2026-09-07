@@ -7,6 +7,7 @@ import {
   SituationSpecification,
   createAgent,
   defineRuntime,
+  supportedModels,
   type InferenceInput,
   type InferenceOutput,
   type InferenceRunner,
@@ -20,6 +21,7 @@ import { BoundaryInterceptor } from './interception.js';
 import { ModelBudget, withDeadline } from './budget.js';
 import { NativeLoopRecorder } from './observer.js';
 import { sanitizeFailure } from './sanitize.js';
+import { geminiEndpoint } from './gemini.js';
 
 class AppState extends RuntimeState {}
 
@@ -193,9 +195,14 @@ function guardRunner(
  * does not export, so a real instance is obtained from an isolated throwaway
  * runtime rather than reconstructed by hand.
  */
-function defaultRunner(): InferenceRunner {
+function defaultRunner(provider: string): InferenceRunner {
   const throwaway = defineRuntime<AppState>();
-  return throwaway.initializeRuntime({ state: new AppState() }).getInferenceRunner();
+  const models = provider === 'gemini'
+    ? supportedModels.map(model => model.specification.provider === 'google'
+      ? { ...model, endpoint: geminiEndpoint() } : model)
+    : supportedModels;
+  return throwaway.initializeRuntime({ state: new AppState(),
+    inferenceRunnerConfig: { supportedModels: models } }).getInferenceRunner();
 }
 
 /** A request refused because the run had already ended. Never a provider error. */
@@ -233,7 +240,7 @@ export async function runPolicy(host: RuntimeHost, config: PolicyConfig): Promis
   let stopped = false;
   const isStopped = () => stopped || host.signal.aborted;
 
-  const inner = config.runner ?? defaultRunner();
+  const inner = config.runner ?? defaultRunner(config.provider);
   const guarded = guardRunner(
     inner,
     host,

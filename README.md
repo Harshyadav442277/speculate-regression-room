@@ -2,7 +2,7 @@
 
 A regression investigation room: two concurrent Mozaik investigators examine an incorrect checkout quote, share executed probe results, and can reconsider a pending action when a peer produces new evidence. Export the observations as a standalone Node regression check.
 
-**Current status:** the local application, evidence/export path and Vercel handlers are built. Installed-package tests use a deterministic inference runner. Real-provider diagnosis, comparative advantage, a real recorded demo and submission remain unverified. See [REVIEW.md](REVIEW.md) for the deployment result and manual setup, and [GAPS.md](GAPS.md) for remaining work. The controlled browser harness is labelled and is not a live-AI demonstration.
+**Current status (September 7):** Gemini is configured locally and on Vercel, and the hosted startup error is fixed. A real hosted run executed three probes but stopped on Google's exhausted free-tier daily quota; a complete diagnosis, comparative advantage, a completed recorded demo and submission remain unverified. All 36 tests and the build pass. See the latest section of [VERIFICATION.md](VERIFICATION.md) and [GAPS.md](GAPS.md). The controlled browser harness is labelled and is not a live-AI demonstration.
 
 ## Run locally
 

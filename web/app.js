@@ -16,6 +16,7 @@ function controls() {
   $('#cancel').hidden = !state.busy;
   $('#import').disabled = state.busy;
   $('#open-recorded').disabled = state.busy;
+  $('#open-demo').disabled = state.busy;
   for (const input of $('#run-form').querySelectorAll('input,select')) input.disabled = state.busy;
 }
 function reset() {
@@ -78,6 +79,9 @@ function showArtifact(artifact, imported = false) {
   state.artifact = artifact; state.busy = false; state.imported = imported; state.stream?.close(); state.stream = null;
   state.evidence = artifact.evidence; renderEvidence();
   for (const card of document.querySelectorAll('.agent')) card.classList.remove('working');
+  if (artifact.status !== 'completed') for (const card of document.querySelectorAll('.agent')) {
+    if (!artifact.conclusions[card.id]) card.querySelector('.agent-state').textContent = 'Stopped';
+  }
   text('#run-state', artifact.status.toUpperCase()); text('#probe-count', `${artifact.metrics.probeExecutions} EXECUTED`);
   text('#run-time', `${(artifact.metrics.elapsedMs / 1000).toFixed(1)}s total`);
   $('#report-area').hidden = false; $('#verify').disabled = !artifact.evidence.length || (state.transport !== 'post-stream' && (imported || !state.ticket));
@@ -93,9 +97,11 @@ function showArtifact(artifact, imported = false) {
   if (!artifact.events.some(event => event.type === 'action.reconsidered')) $('#revisions').replaceChildren(element('p', artifact.configuration.policy === 'single' ? 'Single investigator control: no peer interventions.' : 'No peer-triggered action reconsideration was recorded in this run.', 'empty-text'));
   const stats = $('#stats'); stats.replaceChildren();
   for (const value of [`${artifact.metrics.modelRequests} model requests`, `${artifact.metrics.probeReuses} reused results`, artifact.runtime?.usage ? `${artifact.runtime.usage.inputTokens} input / ${artifact.runtime.usage.outputTokens} output tokens` : 'Token usage unavailable', `${artifact.configuration.policy} policy`]) stats.append(element('span', value));
-  const mode = imported ? (artifact.execution === 'test' ? 'Recorded · controlled test' : 'Recorded run') : (artifact.execution === 'test' ? 'Controlled test' : `Live run · ${artifact.status}`);
+  const mode = imported ? (artifact.execution === 'test' ? 'Recorded · controlled test' : `Recorded run · ${artifact.status}`) : (artifact.execution === 'test' ? 'Controlled test' : `Live run · ${artifact.status}`);
   text('#mode', mode); $('#mode').className = `mode ${artifact.execution === 'test' ? 'test' : ''}`;
-  if (artifact.error) notice(`${artifact.error.message} Completed observations remain available.`, 'error');
+  if (artifact.error) notice(artifact.events.some(e => e.type === 'agent.failed' && e.data.status === 429)
+    ? `The model provider reached its request limit. ${artifact.evidence.length} executed observations and the regression export remain available; no final diagnosis was recorded.`
+    : `${artifact.error.message} Completed observations remain available.`, 'error');
   else notice(imported ? 'Recorded evidence loaded. No agents or model calls are running.' : 'Investigation finished. Export the evidence and regression check, then verify the same cases against the corrected fixture.', 'success');
   controls();
 }
@@ -206,14 +212,21 @@ function validateArtifact(value) {
   return value;
 }
 $('#open-recorded').addEventListener('click', () => $('#import').click());
+function openArtifact(artifact) {
+  reset(); state.ticket = null; configurePolicy(artifact.configuration.policy);
+  for (const runEvent of artifact.events) appendEvent(runEvent);
+  showArtifact(artifact, true);
+}
+$('#open-demo').addEventListener('click', async () => {
+  try { openArtifact(validateArtifact(await request('/recordings/demo.json'))); }
+  catch (error) { notice(error.message, 'error'); }
+});
 $('#import').addEventListener('change', async event => {
   const file = event.target.files?.[0]; if (!file) return;
   try {
     if (file.size > 5_000_000) throw new Error('Choose a run JSON file smaller than 5 MB.');
     const artifact = validateArtifact(JSON.parse(await file.text()));
-    reset(); state.ticket = null; configurePolicy(artifact.configuration.policy);
-    for (const runEvent of artifact.events) appendEvent(runEvent);
-    showArtifact(artifact, true);
+    openArtifact(artifact);
   } catch (error) { notice(error.message, 'error'); }
   finally { event.target.value = ''; }
 });

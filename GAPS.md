@@ -1,13 +1,12 @@
 # SPECULATE — gaps and evidence status
 
-Updated September 6. The application is deployed to Vercel; final endpoint verification is recorded in VERIFICATION.md. Deployment does not establish real-model reliability, submission or competition readiness.
+Updated September 7. Gemini is configured and production startup is fixed. Google's free-tier daily quota is exhausted; no complete live run is verified. Current endpoint evidence is recorded in VERIFICATION.md. Deployment does not establish real-model reliability, submission or competition readiness.
 
 | Priority | Gap | Current evidence | Resolution |
 |---|---|---|---|
-| P0 | Real provider is not configured in this shell | Standard OpenAI/Anthropic/Gemini key variables absent; other credential locations not searched | Configure a provider locally, then run and retain actual trace |
+| P0 | Gemini free-tier daily quota exhausted | Provider confirmed 20 requests/day/project/model quota; user confirmed free tier | User enables billing or waits for quota availability, then verify a complete bounded run |
 | P0 | Agent contribution unproven | Installed Mozaik loops and controlled action revisions work; real-model behavior is unknown | Capture a real peer-driven change and compare an adaptive control |
-| P0 | Hosted model setup missing | Public UI and corrected-case verification deployed; provider key and access code absent | Add Production settings, redeploy, verify one bounded real run |
-| P0 | Final hosted startup fix not deployed | Deployed package CommonJS entry fails on Vercel; explicit ESM-entry fix passes all 35 local tests | User runs the supplied deploy command; automatic approval review blocked Codex's attempt because its usage limit was reached |
+| P0 | Complete hosted live run still missing | Gemini and access code configured; authorized stream executed three real probes before HTTP 429; all three passed corrected-fixture verification | Resolve provider quota and capture a completed hosted artifact |
 | P0 | Registration/private brief/team/submission unknown | Public rules reviewed; participant dashboard and Discord not accessed | Verify with organizer/dashboard before submission |
 | P1 | No controlled comparative results | All speed/cost/test-saving values are unknown | Same harness, honest controls and failure reporting |
 | P1 | No blind evaluation variant reserved | Public correct/double-discount/double-tax fixtures exist | Evaluator reserves a separate configuration before prompt tuning |
